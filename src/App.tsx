@@ -1,24 +1,36 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import { useState } from 'react';
+import TodoList from './containers/TodoList';
+import data from './data.json';
+import TodoContainer from './containers/TodoContainer';
 function App() {
+  const [tasks, setTasks] = useState<Array<Task>>([])
+  const addItem: AddItem = newItem => {
+    if (newItem !== ""){
+      setTasks([...tasks, {text: newItem, complete: false}])
+    }
+  }
+  const toggleComplete: ToggleComplete = selectedTodo =>{
+    const updateTodoList = tasks.map( task => {
+        if (task === selectedTodo){
+          return (
+            {...task, complete: !task.complete}
+          )
+        }
+        return(task)
+      });
+      setTasks(updateTodoList)
+  }
+  const handleRemove: HandleRemove = taskToDelete => {
+    setTasks(tasks.filter((task)=>{
+      return task.text != taskToDelete
+    }))
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div> 
+      <h1>Todo list</h1>
+      <TodoList addItem={addItem}/>
+      <TodoContainer tasks={tasks} toggleComplete={toggleComplete} handleRemove={handleRemove}/>
     </div>
   );
 }
