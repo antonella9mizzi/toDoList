@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@mui/material";
 
-interface TodoItemProps {
+type TodoItemProps = {
     task: Task,
     toggleComplete: ToggleComplete,
     handleRemove(taskToDelete:string): void,

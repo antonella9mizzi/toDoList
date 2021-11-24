@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FormEvent, useState, } from "react";
 import { Grid } from "@mui/material";
 
-interface TodoAddProps {
+type TodoAddProps = {
     addItem: AddItem;
 }
 

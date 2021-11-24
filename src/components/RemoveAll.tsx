@@ -1,6 +1,6 @@
 import React from "react";
 
-interface RemoveAllProps {
+type RemoveAllProps = {
     tasks: Array<Task>,
     handleRemoveAll:HandleRemoveAll,
 };

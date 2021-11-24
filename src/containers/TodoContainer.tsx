@@ -5,7 +5,7 @@ import TodoAdd from "../components/TodoAdd";
 import RemoveAll from "../components/RemoveAll";
 
 
-interface TodoContainerProps {
+type TodoContainerProps = {
     tasks: Array<Task>,
     toggleComplete: ToggleComplete,
     handleRemove: HandleRemove,
