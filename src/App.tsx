@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import TodoList from './containers/TodoList';
 import data from './data.json';
 import TodoContainer from './containers/TodoContainer';
+import TodoAdd from './containers/TodoAdd';
 function App() {
   const [tasks, setTasks] = useState<Array<Task>>([])
   const addItem: AddItem = newItem => {
@@ -34,7 +34,7 @@ function App() {
   return (
     <div> 
       <h1>Todo list</h1>
-      <TodoList addItem={addItem}/>
+      <TodoAdd addItem={addItem}/>
       <TodoContainer tasks={tasks} toggleComplete={toggleComplete} handleRemove={handleRemove} handleRemoveAll={handleRemoveAll}/>
     </div>
   );

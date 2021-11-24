@@ -1,11 +1,11 @@
 import React, {ChangeEvent, FormEvent, useState} from "react";
 
-interface TodoListProps {
+interface TodoAddProps {
     addItem: AddItem;
 }
 
 
-const  TodoList: React.FC<TodoListProps> = ({addItem}) =>{
+const  TodoAdd: React.FC<TodoAddProps> = ({addItem}) =>{
     const [newItem, setNewItem]= useState<string>("");
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{
@@ -26,4 +26,4 @@ const  TodoList: React.FC<TodoListProps> = ({addItem}) =>{
     )
 };
 
-export default TodoList;
+export default TodoAdd;
