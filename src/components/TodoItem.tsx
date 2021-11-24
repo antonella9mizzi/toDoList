@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid } from "@mui/material";
 
 interface TodoItemProps {
     task: Task,
@@ -7,18 +8,15 @@ interface TodoItemProps {
 };
 const TodoItem: React.FC<TodoItemProps>= ({task, toggleComplete, handleRemove}) =>{
     return(
-        <li>
-            {/* en label pongo un style tipo style={task.complete ? "completed" : incomplete}*/}
+        <Grid>
          <label> 
              <input type="checkbox"
              checked={task.complete}
              onChange={()=>toggleComplete(task)}/>
             {task.text}
          </label>
-         <button onClick={()=> handleRemove(task.text)}>
-             Remove
-         </button>
-        </li>
+         <button onClick={()=> handleRemove(task.text)}>x</button>
+        </Grid>
     )
 };
 
