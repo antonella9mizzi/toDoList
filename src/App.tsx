@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import TodoContainer from './containers/TodoContainer';
-import TodoAdd from './containers/TodoAdd';
 
 function App() {
    //get data from localstorage
@@ -52,9 +51,7 @@ function App() {
 
   return (
     <div> 
-      <h1>Todo list</h1>
-      <TodoAdd addItem={addItem}/>
-      <TodoContainer tasks={tasks} toggleComplete={toggleComplete} handleRemove={handleRemove} handleRemoveAll={handleRemoveAll}/>
+      <TodoContainer tasks={tasks} toggleComplete={toggleComplete} handleRemove={handleRemove} handleRemoveAll={handleRemoveAll} addItem={addItem}/>
     </div>
   );
 }
