@@ -26,11 +26,16 @@ function App() {
       return task.text != taskToDelete
     }))
   }
+  const handleRemoveAll: HandleRemoveAll = arrayToDelete => {
+    if (tasks === arrayToDelete){
+      setTasks([]);
+    }
+  }
   return (
     <div> 
       <h1>Todo list</h1>
       <TodoList addItem={addItem}/>
-      <TodoContainer tasks={tasks} toggleComplete={toggleComplete} handleRemove={handleRemove}/>
+      <TodoContainer tasks={tasks} toggleComplete={toggleComplete} handleRemove={handleRemove} handleRemoveAll={handleRemoveAll}/>
     </div>
   );
 }

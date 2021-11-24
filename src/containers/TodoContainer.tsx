@@ -1,14 +1,18 @@
 import React from "react";
 import TodoItem from "../components/TodoItem";
+import RemoveAll from "../components/RemoveAll";
 
 interface TodoContainerProps {
     tasks: Array<Task>,
     toggleComplete: ToggleComplete,
     handleRemove: HandleRemove,
+    handleRemoveAll: HandleRemoveAll,
+
 };
 
-const TodoContainer: React.FC<TodoContainerProps> = ({tasks, toggleComplete, handleRemove}) =>{
+const TodoContainer: React.FC<TodoContainerProps> = ({tasks, toggleComplete, handleRemove, handleRemoveAll}) =>{
  return(
+     <>
         <ul>
             {
                 tasks.map(task => (
@@ -16,6 +20,8 @@ const TodoContainer: React.FC<TodoContainerProps> = ({tasks, toggleComplete, han
                 ))
             }
         </ul>
+        <RemoveAll handleRemoveAll={handleRemoveAll} tasks={tasks}/>
+    </>
     )
 };
 

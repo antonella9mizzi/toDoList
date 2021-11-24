@@ -8,3 +8,5 @@ type Task = {
 type ToggleComplete = (selectedTodo:Task) => void;
 
 type HandleRemove = (taskToDelete:string) => void ;
+
+type HandleRemoveAll = (arrayToDelete: Array) => void;
