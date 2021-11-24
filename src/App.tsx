@@ -1,17 +1,29 @@
 import React from 'react';
-import { useState } from 'react';
-import data from './data.json';
+import { useState, useEffect } from 'react';
 import TodoContainer from './containers/TodoContainer';
 import TodoAdd from './containers/TodoAdd';
+
 function App() {
-  const [tasks, setTasks] = useState<Array<Task>>([])
+   //get data from localstorage
+   const getItems = () =>{
+    let list= localStorage.getItem('List');
+    console.log(list)
+    if (list) {
+      return JSON.parse(localStorage.getItem('List') || '{}')
+    }else{
+      return []
+    }
+  }
+
+  const [tasks, setTasks] = useState(getItems())
   const addItem: AddItem = newItem => {
     if (newItem !== ""){
       setTasks([...tasks, {text: newItem, complete: false}])
     }
   }
+
   const toggleComplete: ToggleComplete = selectedTodo =>{
-    const updateTodoList = tasks.map( task => {
+    const updateTodoList = tasks.map( (task: { complete: any; text?: string; }) => {
         if (task === selectedTodo){
           return (
             {...task, complete: !task.complete}
@@ -21,8 +33,9 @@ function App() {
       });
       setTasks(updateTodoList)
   }
+
   const handleRemove: HandleRemove = taskToDelete => {
-    setTasks(tasks.filter((task)=>{
+    setTasks(tasks.filter((task: { text: string; })=>{
       return task.text != taskToDelete
     }))
   }
@@ -31,6 +44,12 @@ function App() {
       setTasks([]);
     }
   }
+  //save items in localstorage
+  useEffect(() => {
+    localStorage.setItem("List", JSON.stringify(tasks));
+  }, [tasks]);
+ 
+
   return (
     <div> 
       <h1>Todo list</h1>
