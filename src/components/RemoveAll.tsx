@@ -2,9 +2,9 @@ import React from "react";
 
 interface RemoveAllProps {
     tasks: Array<Task>,
-    handleRemoveAll(arrayToDelete:Array<Task>): void,
+    handleRemoveAll:HandleRemoveAll,
 };
-const RemoveAll : React.FC<RemoveAllProps> = (tasks, handleRemoveAll)=>{
+const RemoveAll : React.FC<RemoveAllProps> = ({tasks, handleRemoveAll})=>{
  return(
      <button onClick={()=>handleRemoveAll(tasks)}>
          Delete all
